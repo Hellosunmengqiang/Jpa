@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<persistence version="2.1" 
+           xmlns="http://xmlns.jcp.org/xml/ns/persistence" 
+           xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+           xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/persistence http://xmlns.jcp.org/xml/ns/persistence/persistence_2_1.xsd">
+	<persistence-unit name="jpademo" transaction-type="RESOURCE_LOCAL">
+	
+	<!--1、 jap是一个规范，是一个接口，它没有任何的具体实现，这里需要指定一个jpa具体实现 -->
+	  <provider>org.hibernate.jpa.HibernatePersistenceProvider</provider>
+	  <!-- 配置缓存策略 -->
+	  <shared-cache-mode>ENABLE_SELECTIVE</shared-cache-mode>
+	 <properties>
+	    <!-- 2、链接数据库的基本信息 -->
+	  	<property name="javax.persistence.jdbc.driver" value="com.mysql.jdbc.Driver" />
+	    <property name="javax.persistence.jdbc.url" value="jdbc:mysql://47.103.119.216:3306/jpademo" />   
+		<property name="javax.persistence.jdbc.user" value="root" />
+		<property name="javax.persistence.jdbc.password" value="Smq@123456" />	
+		
+		    <!--3、 jpa的具体实现，hibernate的基本属性 -->
+			<property name="hibernate.dialect" value="org.hibernate.dialect.MySQL5Dialect" />
+			<property name="hibernate.show_sql" value="true"/>
+			<property name="hibernate.format_sql" value="true"/>
+			<property name="hibernate.hbm2ddl.auto" value="update"/>
+			
+		<!-- 	开启二级缓存 -->
+           <property name="hibernate.cache.use_second_level_cache" value="true"/>
+         <!--配置二级缓存技术提供者 -->
+              <property name="hibernate.cache.region.factory_class" value="org.hibernate.cache.ehcache.EhCacheRegionFactory"/>
+        <!--开启查询缓存 -->
+                 <property name="hibernate.cache.use_query_cache" value="true"  />
+	</properties>
+		
+	</persistence-unit>
+	
+</persistence>
