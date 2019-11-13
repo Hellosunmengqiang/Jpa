@@ -19,7 +19,7 @@ public class ClassTeacher {
 	private String ClassTeacherName;
 	
 	
-	private List<Students> list;//单向一对多，去掉Students类的ClassTeacher属性
+	private List<Students> list;//单向一对多，  去掉Students类的ClassTeacher属性
 	
 	@JoinColumn(name="stu_id")
 	@OneToMany(fetch=FetchType.LAZY,cascade= {CascadeType.REMOVE})//级联删除
